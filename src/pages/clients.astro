@@ -44,7 +44,7 @@ const clients = clientsData.clients.map(c => ({
     const W = 165, H = 191, GAP = 3;
     const grid = document.getElementById('hexGrid')!;
     let resizeTimer: ReturnType<typeof setTimeout>;
-    function hexWidth() { const s = grid.querySelector('.hex') as HTMLElement; return s ? s.offsetWidth : W; }
+    function hexWidth() { const s = grid.querySelector('.hex') as HTMLElement; return (s ? s.offsetWidth : 0) || W; }
     function buildGrid() {
       const hexes = Array.from(grid.querySelectorAll<HTMLElement>('[data-hex]'));
       const w = hexWidth();
@@ -64,8 +64,10 @@ const clients = clientsData.clients.map(c => ({
         rowIdx++;
       }
     }
-    buildGrid();
-    window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(buildGrid, 80); });
-  })();
+    // Run after all stylesheets are loaded so offsetWidth is correct
+    window.addEventListener('load', () => {
+      buildGrid();
+      window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(buildGrid, 80); });
+    });
 </script>
 </Base>
