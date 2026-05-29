@@ -39,12 +39,13 @@ CMS.init({
         identifier_field: 'client',
         summary: '{{client}} — {{title}}',
         slug: '{{fields.client}}',
+        preview_path: 'stories/{{slug}}',
         extension: 'md',
         format: 'frontmatter',
         fields: [
           { label: 'Client Name', name: 'client', widget: 'string' },
           { label: 'Title', name: 'title', widget: 'string' },
-          { label: 'Logo Path', name: 'logo', widget: 'string', hint: 'e.g. /logos/irhythm.jpg' },
+          { label: 'Logo Path', name: 'logo', widget: 'string', hint: 'Must start with /  e.g. /logos/irhythm.jpg' },
           { label: 'Challenge Quote', name: 'challenge', widget: 'text' },
           {
             label: 'Tags',
@@ -71,7 +72,7 @@ CMS.init({
                 widget: 'list',
                 fields: [
                   { label: 'Company Name', name: 'name', widget: 'string' },
-                  { label: 'Logo Path', name: 'logo', widget: 'string', hint: 'e.g. /logos/cisco.jpg' },
+                  { label: 'Logo Path', name: 'logo', widget: 'string', hint: 'Must start with /  e.g. /logos/cisco.jpg' },
                 ],
               },
             ],

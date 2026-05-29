@@ -1,7 +1,10 @@
 ---
 import Base from '../layouts/Base.astro';
 import clientsData from '../data/clients.json';
-const clients = clientsData.clients;
+const clients = clientsData.clients.map(c => ({
+  ...c,
+  logo: c.logo.startsWith('/') ? c.logo : '/' + c.logo,
+}));
 ---
 <Base title="Clients" activePage="clients">
 <style>
