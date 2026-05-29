@@ -124,4 +124,52 @@ CMS.init({
 });
 </script>
 </body>
+<script is:inline>
+// Map each CMS file/collection to its live URL
+var PREVIEW_URLS = {
+  clients:     'https://collabria-astro.vercel.app/clients',
+  hero_quotes: 'https://collabria-astro.vercel.app/',
+  services:    'https://collabria-astro.vercel.app/#services',
+  cases:       'https://collabria-astro.vercel.app/cases',
+};
+
+function getLiveUrl() {
+  var hash = window.location.hash || '';
+  // Case study entry: #/collections/cases/entries/irhythm
+  var entryMatch = hash.match(/\/collections\/cases\/entries\/([^/]+)/);
+  if (entryMatch) return 'https://collabria-astro.vercel.app/stories/' + entryMatch[1];
+  // Site data file: #/collections/site_data/entries/clients
+  var fileMatch = hash.match(/\/entries\/([^/]+)$/);
+  if (fileMatch && PREVIEW_URLS[fileMatch[1]]) return PREVIEW_URLS[fileMatch[1]];
+  // Collection index
+  var colMatch = hash.match(/\/collections\/([^/]+)$/);
+  if (colMatch && PREVIEW_URLS[colMatch[1]]) return PREVIEW_URLS[colMatch[1]];
+  return 'https://collabria-astro.vercel.app/';
+}
+
+function patchPreviewButtons() {
+  document.querySelectorAll('a, button').forEach(function (el) {
+    if (el.dataset.patched) return;
+    var text = el.textContent || '';
+    if (text.includes('Check for Preview') || text.includes('View Preview')) {
+      el.dataset.patched = 'true';
+      // Replace entire element with a clean anchor
+      var a = document.createElement('a');
+      a.href = getLiveUrl();
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.style.cssText = el.getAttribute('style') || '';
+      a.className = el.className;
+      a.textContent = 'View on Site ↗';
+      a.style.cursor = 'pointer';
+      el.parentNode && el.parentNode.replaceChild(a, el);
+    }
+  });
+}
+
+// Re-run whenever Decap re-renders (hash changes or DOM mutations)
+var observer = new MutationObserver(patchPreviewButtons);
+observer.observe(document.body, { childList: true, subtree: true });
+window.addEventListener('hashchange', patchPreviewButtons);
+</script>
 </html>
