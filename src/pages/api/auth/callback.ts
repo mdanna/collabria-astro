@@ -16,8 +16,8 @@ export const GET: APIRoute = async ({ url }) => {
       Accept: 'application/json',
     },
     body: JSON.stringify({
-      client_id: import.meta.env.GITHUB_CLIENT_ID,
-      client_secret: import.meta.env.GITHUB_CLIENT_SECRET,
+      client_id: process.env.GITHUB_CLIENT_ID,
+      client_secret: process.env.GITHUB_CLIENT_SECRET,
       code,
     }),
   });
@@ -25,21 +25,51 @@ export const GET: APIRoute = async ({ url }) => {
   const data = await tokenRes.json() as { access_token?: string; error?: string };
 
   if (data.error || !data.access_token) {
-    return new Response(`GitHub OAuth error: ${data.error}`, { status: 400 });
+    return new Response(`GitHub OAuth error: ${data.error ?? 'no token returned'}`, { status: 400 });
   }
 
   const token = data.access_token;
-  const content = `
-<!DOCTYPE html>
+
+  // Decap CMS expects a two-step postMessage handshake:
+  // 1. Popup sends "authorizing:github" to announce itself
+  // 2. Opener replies with its origin
+  // 3. Popup sends the token to that exact origin
+  const content = `<!DOCTYPE html>
 <html>
 <body>
 <script>
   (function () {
-    const msg = JSON.stringify({ token: '${token}', provider: 'github' });
-    if (window.opener) {
-      window.opener.postMessage('authorization:github:success:' + msg, '*');
+    var provider = 'github';
+    var data = ${JSON.stringify({ token, provider })};
+    var msg = 'authorization:' + provider + ':success:' + JSON.stringify(data);
+
+    function send(origin) {
+      window.opener.postMessage(msg, origin);
     }
-    window.close();
+
+    if (window.opener) {
+      // Step 1: announce
+      window.opener.postMessage('authorizing:' + provider, '*');
+
+      // Step 2: wait for opener to reply with its origin, then send token
+      window.addEventListener('message', function (e) {
+        if (e.data === 'authorizing:' + provider) {
+          send(e.origin);
+        } else {
+          // Some Decap versions just need the direct send
+          send('*');
+        }
+        setTimeout(function () { window.close(); }, 500);
+      }, { once: true });
+
+      // Fallback: send directly after a short wait in case no reply comes
+      setTimeout(function () {
+        send('*');
+        setTimeout(function () { window.close(); }, 500);
+      }, 2000);
+    } else {
+      document.body.innerText = 'Authentication complete. You can close this window.';
+    }
   })();
 </script>
 </body>
