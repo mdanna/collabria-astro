@@ -14,9 +14,7 @@ const clients = clientsData.clients.map(c => ({
   .clients-intro-label::before, .clients-intro-label::after { content: ''; width: 24px; height: 1px; background: rgba(253,248,243,0.3); }
   .clients-intro h1 { font-size: clamp(1.6rem, 2.5vw, 2rem); font-weight: 100; color: var(--cream); letter-spacing: 0.06em; }
   .hex-grid-wrap { margin: 0 auto; width: fit-content; max-width: 100%; }
-  .hex-row { display: flex; gap: 3px; margin-top: -46px; }
-  .hex-row:first-child { margin-top: 0; }
-  .hex-row.offset { padding-left: 84px; }
+  /* hex-row styles are applied via JS to avoid Astro scoping stripping them from dynamic elements */
   .hex { width: 165px; height: 191px; clip-path: polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%); background: var(--white); display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 28px; flex-shrink: 0; transition: background 0.2s; }
   .hex:hover { background: var(--cream); }
   .hex-logo { max-width: 100%; max-height: 136px; width: auto; height: auto; object-fit: contain; mix-blend-mode: multiply; }
@@ -59,6 +57,10 @@ const clients = clientsData.clients.map(c => ({
         const count = isOffset ? Math.max(1, perRow - 1) : perRow;
         const row = document.createElement('div');
         row.className = 'hex-row' + (isOffset ? ' offset' : '');
+        row.style.display = 'flex';
+        row.style.gap = '3px';
+        row.style.marginTop = rowIdx === 0 ? '0' : '-46px';
+        if (isOffset) row.style.paddingLeft = '84px';
         for (let j = 0; j < count && i < hexes.length; j++) row.appendChild(hexes[i++]);
         grid.appendChild(row);
         rowIdx++;
