@@ -1,0 +1,43 @@
+---
+import Base from '../layouts/Base.astro';
+import { casesPreview } from '../data/cases-preview.js';
+---
+<Base title="Cases" activePage="cases">
+<style>
+  .cases-section { padding: 80px 3rem 100px; background: var(--white); }
+  .cases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.45rem; }
+  .case-card { background: var(--white); display: flex; flex-direction: column; border: 1px solid var(--beige-mid); border-radius: 4px; overflow: hidden; transition: background 0.2s, box-shadow 0.2s; text-decoration: none; }
+  .case-card:hover { background: var(--cream); box-shadow: 0 8px 24px rgba(59,26,12,0.08); }
+  .case-card:hover .case-footer { background: var(--brown-dark); }
+  .case-body { height: 170px; display: flex; align-items: center; justify-content: center; padding: 1.75rem; }
+  .case-logo { max-width: 90%; max-height: 180px; width: auto; height: auto; object-fit: contain; display: block; mix-blend-mode: multiply; }
+  .case-footer { height: 90px; background: var(--espresso); padding: 1rem 1.25rem; transition: background 0.2s; display: flex; flex-direction: column; justify-content: center; }
+  .case-client-name { font-size: 0.78rem; font-weight: 400; color: var(--cream); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.25rem; }
+  .case-title { font-size: 0.76rem; font-weight: 300; color: rgba(253,248,243,0.72); line-height: 1.4; }
+  @media (max-width: 900px) { .cases-section { padding: 60px 1.5rem 80px; } .cases-grid { grid-template-columns: repeat(2,1fr); } }
+  @media (max-width: 480px) { .cases-grid { grid-template-columns: 1fr; } }
+</style>
+
+<div class="page-hero">
+  <div class="page-hero-label">Our Work</div>
+  <h1 class="page-hero-title">Real challenges.<br /><strong>Proven solutions.</strong></h1>
+</div>
+
+<section class="cases-section">
+  <div class="section-inner">
+    <div class="cases-grid">
+      {casesPreview.map(c => (
+        <a class="case-card" href={`/stories/${c.slug}`}>
+          <div class="case-body">
+            <img class="case-logo" src={c.logo} alt={c.client} />
+          </div>
+          <div class="case-footer">
+            <p class="case-client-name">{c.client}</p>
+            <p class="case-title">{c.title}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+</Base>

@@ -1,0 +1,75 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+export async function getStaticPaths() {
+  const cases = await getCollection('cases');
+  return cases.map(entry => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+const { client, title, logo, challenge, tags } = entry.data;
+---
+<Base title={client} activePage="cases">
+<style>
+  .story-section { padding: 80px 3rem 120px; background: var(--white); }
+  .story-back { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; font-weight: 300; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brown-warm); text-decoration: none; margin-bottom: 3rem; transition: color 0.2s; }
+  .story-back:hover { color: var(--espresso); }
+  .story-back svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .story-grid { display: grid; grid-template-columns: 260px 1fr; gap: 5rem; align-items: start; }
+  .story-logo-wrap { background: var(--cream); border: 1px solid var(--beige-mid); border-radius: 4px; padding: 2.5rem 2rem; display: flex; align-items: center; justify-content: center; aspect-ratio: 1; }
+  .story-logo { max-width: 100%; max-height: 120px; width: auto; height: auto; object-fit: contain; mix-blend-mode: multiply; }
+  .story-client { font-size: 0.7rem; font-weight: 300; letter-spacing: 0.22em; text-transform: uppercase; color: var(--brown-warm); display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; }
+  .story-client::before { content: ''; width: 24px; height: 1px; background: var(--brown-warm); display: block; flex-shrink: 0; }
+  .story-title { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 100; color: var(--espresso); letter-spacing: 0.04em; line-height: 1.25; margin-bottom: 2.5rem; }
+  .story-block { margin-bottom: 2rem; }
+  .story-block-label { font-size: 0.72rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--espresso); margin-bottom: 0.75rem; }
+  .story-block-text { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.05rem; color: var(--text-soft); line-height: 1.85; }
+  .story-block-text em { font-style: italic; color: var(--brown-mid); }
+  .story-divider { width: 30px; height: 1.5px; background: var(--taupe); margin: 2rem 0; }
+  .story-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 2.5rem; }
+  .story-tags span { font-size: 0.68rem; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; color: var(--brown-mid); padding: 0.3rem 0.7rem; border: 1px solid var(--beige-mid); border-radius: 2px; }
+  @media (max-width: 860px) { .story-section { padding: 60px 1.5rem 80px; } .story-grid { grid-template-columns: 1fr; gap: 2.5rem; } .story-logo-wrap { max-width: 200px; aspect-ratio: auto; padding: 2rem; } }
+</style>
+
+<div class="page-hero">
+  <div class="page-hero-label">Case Study</div>
+  <h1 class="page-hero-title"><strong>{client}</strong></h1>
+</div>
+
+<section class="story-section">
+  <div class="section-inner">
+    <a href="/cases" class="story-back">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      All Cases
+    </a>
+    <div class="story-grid">
+      <div class="story-logo-wrap">
+        <img src={logo} alt={client} class="story-logo" />
+      </div>
+      <div class="story-content">
+        <div class="story-client">{client}</div>
+        <h2 class="story-title">{title}</h2>
+        <div class="story-block">
+          <div class="story-block-label">Challenge</div>
+          <p class="story-block-text"><em>"{challenge}"</em></p>
+        </div>
+        <div class="story-divider"></div>
+        <div class="story-block">
+          <div class="story-block-label">Solution</div>
+          <div class="story-block-text"><Content /></div>
+        </div>
+        {tags && tags.length > 0 && (
+          <div class="story-tags">
+            {tags.map(tag => <span>{tag}</span>)}
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</section>
+</Base>

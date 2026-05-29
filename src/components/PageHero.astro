@@ -1,0 +1,22 @@
+---
+interface Props {
+  label: string;
+  title: string;
+  boldFirst?: boolean;
+  subtitle?: string;
+}
+const { label, title, boldFirst = false, subtitle } = Astro.props;
+const parts = title.split(/\s*\.\s*|\s*<br\s*\/?>\s*/);
+---
+<div class="page-hero">
+  <div class="page-hero-label">{label}</div>
+  <h1 class="page-hero-title">
+    <slot name="title">
+      {boldFirst
+        ? <><strong>{parts[0]}</strong>{parts.length > 1 ? ` ${parts.slice(1).join(' ')}` : ''}</>
+        : <Fragment set:html={title} />
+      }
+    </slot>
+  </h1>
+  {subtitle && <p class="page-hero-sub">{subtitle}</p>}
+</div>

@@ -1,0 +1,110 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="About" activePage="about">
+<style>
+  .about-section { padding: 80px 3rem 100px; background: var(--white); }
+  .about-grid { display: grid; grid-template-columns: 280px 1fr; gap: 5rem; align-items: start; margin-top: 1rem; }
+  .about-photo { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 3px; display: block; margin-bottom: 1.5rem; background: var(--beige); }
+  .about-name { font-size: 1.1rem; font-weight: 400; color: var(--espresso); letter-spacing: 0.08em; margin-bottom: 0.2rem; }
+  .about-role { font-size: 0.82rem; font-weight: 300; color: var(--text-soft); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2rem; }
+  .about-contacts { display: flex; flex-direction: column; gap: 0.75rem; }
+  .about-contact-item { display: flex; align-items: center; gap: 0.75rem; }
+  .about-contact-icon { width: 20px; height: 20px; color: var(--taupe); flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+  .about-contact-icon svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+  .about-contact-item a, .about-contact-item span { font-size: 0.85rem; font-weight: 300; color: var(--brown-mid); letter-spacing: 0.04em; text-decoration: none; transition: color 0.2s; }
+  .about-contact-item a:hover { color: var(--espresso); }
+  .about-bio p { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.05rem; color: var(--text-soft); line-height: 1.9; margin-bottom: 1.5rem; }
+  .about-bio p:last-child { margin-bottom: 0; }
+  .about-bio strong { color: var(--text); font-weight: 400; }
+  .about-divider { width: 30px; height: 1.5px; background: var(--taupe); margin: 2.5rem 0; }
+  .about-network-title { font-size: 0.82rem; font-weight: 400; color: var(--espresso); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.75rem; }
+  /* Resources */
+  .resources-section { background: var(--beige); padding: 80px 3rem 100px; border-top: 1px solid var(--beige-mid); }
+  .resources-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 2rem; max-width: 800px; margin: 3rem 0 0; }
+  .resource-card { border: 1px solid var(--beige-mid); border-radius: 4px; overflow: hidden; display: flex; flex-direction: column; background: var(--white); transition: border-color 0.2s, box-shadow 0.2s; }
+  .resource-card:hover { border-color: var(--taupe); box-shadow: 0 8px 32px rgba(59,26,12,0.07); }
+  .resource-card-header { background: var(--cream); padding: 2rem 2rem 1.25rem; text-align: center; border-bottom: 1px solid var(--beige-mid); }
+  .resource-logo { height: 36px; width: auto; margin-bottom: 1rem; mix-blend-mode: multiply; }
+  .resource-doc-title { font-size: 0.78rem; font-weight: 400; color: var(--brown-warm); letter-spacing: 0.15em; text-transform: uppercase; }
+  .resource-preview { padding: 1.75rem 2rem; flex: 1; display: flex; align-items: center; justify-content: center; }
+  .resource-preview-img { max-width: 100%; max-height: 200px; width: auto; height: auto; object-fit: contain; display: block; border-radius: 2px; box-shadow: 4px 4px 12px rgba(59,26,12,0.12); }
+  .resource-card-footer { padding: 1.25rem 2rem; border-top: 1px solid var(--beige-mid); text-align: center; }
+  @media (max-width: 860px) {
+    .about-section { padding: 60px 1.5rem 80px; }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .about-photo { max-width: 240px; }
+    .resources-section { padding: 60px 1.5rem 80px; }
+    .resources-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<div class="page-hero">
+  <div class="page-hero-label">Who We Are</div>
+  <h1 class="page-hero-title"><strong>About</strong> collabria</h1>
+</div>
+
+<section class="about-section">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-sidebar">
+        <img src="/lisa-mroz.jpg" alt="Lisa Mroz" class="about-photo" />
+        <p class="about-name">Lisa Mroz</p>
+        <p class="about-role">Managing Partner</p>
+        <div class="about-contacts">
+          <div class="about-contact-item">
+            <div class="about-contact-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <a href="mailto:lisa@collabriainc.com">lisa@collabriainc.com</a>
+          </div>
+          <div class="about-contact-item">
+            <div class="about-contact-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.1 2.18 2 2 0 012.08 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.16 6.16l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+            <a href="tel:+14158064025">(415) 806 4025</a>
+          </div>
+          <div class="about-contact-item">
+            <div class="about-contact-icon"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
+            <a href="https://www.linkedin.com/in/lisamroz" target="_blank" rel="noopener">Lisa Mroz</a>
+          </div>
+          <div class="about-contact-item">
+            <div class="about-contact-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+            <span>lisamrozsf (Skype)</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-bio">
+        <p>Collabria's founder, <strong>Lisa Mroz</strong>, has 35+ years' experience working with leaders of small, medium and global organizations. Her expertise lies in helping organizations <strong>embrace change at critical inflection points</strong> — a shift in strategy or ownership, pre- or post-acquisition assessment, merger misalignment, or scaling a workforce for increased performance.</p>
+        <p>Prior to founding Collabria, Lisa held senior roles at Andersen Consulting / Accenture, CSC Index, Hewlett-Packard, and The Concours Group where she built skills to quickly assess the larger picture, understand complex issues, and distill into <strong>actionable solutions</strong>. Since then, she's partnered with senior leaders for both quick hit, high impact projects and longer term project-based initiatives.</p>
+        <p>Lisa is an avid traveller with a love for culture, wine, and food. Her passion for road cycling complements those hobbies. Lisa holds an MBA from the <strong>Kellogg Graduate School of Management</strong>, a BA in the Plan II Honors Program from the University of Texas, and an Honors Diploma from the Wine and Spirits Education Trust. She earned her <strong>Certified Sommelier</strong> title somewhere along the way as well.</p>
+        <div class="about-divider"></div>
+        <p class="about-network-title">The Collabria Network</p>
+        <p>The Collabria network includes experienced professionals from a wide range of specialties and industries. Most are former MBB / big 5 consultants or industry specialists who prefer to work more closely with clients.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="resources-section">
+  <div class="section-inner">
+    <span class="section-label">Resources</span>
+    <h2 class="section-title">Learn more about<br /><strong>how Collabria can help.</strong></h2>
+    <div class="resources-grid">
+      {[
+        { title: 'Detailed Overview', preview: '/collabria-overview.jpg', file: '/collabria-overview.pdf', label: 'Download Overview' },
+        { title: 'One Pager', preview: '/collabria-onepager.jpg', file: '/collabria-onepager.pdf', label: 'Download One Pager' },
+      ].map(r => (
+        <div class="resource-card">
+          <div class="resource-card-header">
+            <img src="/logo.png" alt="collabria" class="resource-logo" />
+            <div class="resource-doc-title">{r.title}</div>
+          </div>
+          <div class="resource-preview">
+            <img src={r.preview} alt={`${r.title} preview`} class="resource-preview-img" />
+          </div>
+          <div class="resource-card-footer">
+            <a href={r.file} download class="btn-outline">{r.label}</a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+</Base>

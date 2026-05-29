@@ -1,0 +1,33 @@
+---
+interface Props {
+  activePage?: string;
+}
+const { activePage = '' } = Astro.props;
+
+const links = [
+  { href: '/',        label: 'Overview', key: 'overview' },
+  { href: '/cases',   label: 'Cases',    key: 'cases'    },
+  { href: '/clients', label: 'Clients',  key: 'clients'  },
+  { href: '/about',   label: 'About',    key: 'about'    },
+  { href: '/contact', label: 'Contact',  key: 'contact'  },
+];
+---
+<nav>
+  <a href="/" class="nav-logo"><img src="/logo.png" alt="collabria" /></a>
+  <ul class="nav-links">
+    {links.map(link => (
+      <li>
+        <a href={link.href} class={activePage === link.key ? 'active' : ''}>
+          {link.label}
+        </a>
+      </li>
+    ))}
+  </ul>
+  <button class="nav-hamburger" id="navToggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-bottom">
+    <a href="mailto:lisa@collabriainc.com">lisa@collabriainc.com</a>
+    <a href="tel:+14158064025">+1 415 806 4025</a>
+  </div>
+</nav>
