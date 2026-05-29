@@ -93,6 +93,30 @@ CMS.init({
               },
             ],
           },
+          {
+            label: 'Services',
+            name: 'services',
+            file: 'src/data/services.json',
+            fields: [
+              {
+                label: 'Services',
+                name: 'services',
+                widget: 'list',
+                fields: [
+                  { label: 'Title', name: 'title', widget: 'string' },
+                  { label: 'Lead Sentence', name: 'lead', widget: 'text', required: false, hint: 'Bold intro line shown above the body text' },
+                  { label: 'Pull Quote', name: 'quote', widget: 'text', required: false, hint: 'Italic quote (used instead of lead on Culture & Change)' },
+                  { label: 'Body', name: 'body', widget: 'text' },
+                  {
+                    label: 'Bullet Points',
+                    name: 'items',
+                    widget: 'list',
+                    field: { label: 'Item', name: 'item', widget: 'string' },
+                  },
+                ],
+              },
+            ],
+          },
         ],
       },
     ],

@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
-import { services } from '../data/services.js';
+import servicesData from '../data/services.json';
+const services = servicesData.services;
 import heroQuotesData from '../data/hero-quotes.json';
 const heroQuotes = heroQuotesData.quotes;
 import { featuredCase, casesPreview } from '../data/cases-preview.js';
