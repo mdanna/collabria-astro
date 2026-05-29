@@ -1,6 +1,10 @@
 {
   "clients": [
     {
+      "name": "iRhythm",
+      "logo": "logos/irhythm.jpg"
+    },
+    {
       "name": "Danaher",
       "logo": "logos/danaher.jpg"
     },
@@ -9,16 +13,12 @@
       "logo": "logos/digitalrealty.jpg"
     },
     {
-      "name": "IDEO",
-      "logo": "logos/ideo.jpg"
-    },
-    {
       "name": "Mozilla",
       "logo": "logos/mozilla.jpg"
     },
     {
-      "name": "iRhythm",
-      "logo": "logos/irhythm.jpg"
+      "name": "IDEO",
+      "logo": "logos/ideo.jpg"
     },
     {
       "name": "Dolby",
