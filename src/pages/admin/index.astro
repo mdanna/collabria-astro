@@ -36,7 +36,9 @@ CMS.init({
         folder: 'src/content/cases',
         create: true,
         delete: true,
-        slug: '{{slug}}',
+        identifier_field: 'client',
+        summary: '{{client}} — {{title}}',
+        slug: '{{fields.client}}',
         extension: 'md',
         format: 'frontmatter',
         fields: [
