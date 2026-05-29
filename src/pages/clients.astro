@@ -69,5 +69,6 @@ const clients = clientsData.clients.map(c => ({
       buildGrid();
       window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(buildGrid, 80); });
     });
+  })();
 </script>
 </Base>
