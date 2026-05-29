@@ -1,0 +1,58 @@
+backend:
+  name: github
+  repo: mdanna/collabria-astro
+  branch: main
+  auth_endpoint: /api/auth
+
+media_folder: public/logos
+public_folder: /logos
+
+collections:
+
+  - name: cases
+    label: Case Studies
+    label_singular: Case Study
+    folder: src/content/cases
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: md
+    format: frontmatter
+    fields:
+      - { label: Client Name, name: client, widget: string }
+      - { label: Title, name: title, widget: string }
+      - { label: Logo Path, name: logo, widget: string, hint: "e.g. /logos/irhythm.jpg" }
+      - { label: Challenge Quote, name: challenge, widget: text }
+      - label: Tags
+        name: tags
+        widget: list
+        required: false
+        field: { label: Tag, name: tag, widget: string }
+      - { label: Solution, name: body, widget: markdown }
+
+  - name: site_data
+    label: Site Data
+    files:
+
+      - label: Client List
+        name: clients
+        file: src/data/clients.json
+        fields:
+          - label: Clients
+            name: clients
+            widget: list
+            fields:
+              - { label: Company Name, name: name, widget: string }
+              - { label: Logo Path, name: logo, widget: string, hint: "e.g. /logos/cisco.jpg" }
+
+      - label: Homepage Quotes
+        name: hero_quotes
+        file: src/data/hero-quotes.json
+        fields:
+          - label: Quotes
+            name: quotes
+            widget: list
+            fields:
+              - { label: Quote, name: quote, widget: text }
+              - { label: Client Name, name: client, widget: string }
+              - { label: Case Slug, name: slug, widget: string, hint: "e.g. irhythm" }

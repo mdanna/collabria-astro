@@ -1,246 +1,248 @@
-[
-  {
-    "name": "Danaher",
-    "logo": "logos/danaher.jpg"
-  },
-  {
-    "name": "Digital Realty",
-    "logo": "logos/digitalrealty.jpg"
-  },
-  {
-    "name": "IDEO",
-    "logo": "logos/ideo.jpg"
-  },
-  {
-    "name": "Mozilla",
-    "logo": "logos/mozilla.jpg"
-  },
-  {
-    "name": "iRhythm",
-    "logo": "logos/irhythm.jpg"
-  },
-  {
-    "name": "Dolby",
-    "logo": "logos/dolby.jpg"
-  },
-  {
-    "name": "Genentech",
-    "logo": "logos/genentech.jpg"
-  },
-  {
-    "name": "Cyrq Energy",
-    "logo": "logos/cyrq.jpg"
-  },
-  {
-    "name": "Gap Inc.",
-    "logo": "logos/gap.jpg"
-  },
-  {
-    "name": "Chevron",
-    "logo": "logos/chevron.jpg"
-  },
-  {
-    "name": "Box",
-    "logo": "logos/box.jpg"
-  },
-  {
-    "name": "Napa Valley Vintners",
-    "logo": "logos/napa-valley-vintners.jpg"
-  },
-  {
-    "name": "Riot Games",
-    "logo": "logos/riotgames.jpg"
-  },
-  {
-    "name": "Visa",
-    "logo": "logos/visa.jpg"
-  },
-  {
-    "name": "Kaiser Permanente",
-    "logo": "logos/kaiser-permanente.jpg"
-  },
-  {
-    "name": "O'Reilly",
-    "logo": "logos/oreilly.jpg"
-  },
-  {
-    "name": "RocketFuel",
-    "logo": "logos/rocketfuel.jpg"
-  },
-  {
-    "name": "Motorola",
-    "logo": "logos/motorola.jpg"
-  },
-  {
-    "name": "HP",
-    "logo": "logos/hp.jpg"
-  },
-  {
-    "name": "Cisco",
-    "logo": "logos/cisco.jpg"
-  },
-  {
-    "name": "Informatica",
-    "logo": "logos/informatica.jpg"
-  },
-  {
-    "name": "Roche",
-    "logo": "logos/roche.jpg"
-  },
-  {
-    "name": "PG&E",
-    "logo": "logos/pge.jpg"
-  },
-  {
-    "name": "Accenture",
-    "logo": "logos/accenture.jpg"
-  },
-  {
-    "name": "Lockheed Martin",
-    "logo": "logos/lockheed-martin.jpg"
-  },
-  {
-    "name": "IRS",
-    "logo": "logos/irs.jpg"
-  },
-  {
-    "name": "Levi's",
-    "logo": "logos/levis.jpg"
-  },
-  {
-    "name": "Treasury Wine Estates",
-    "logo": "logos/treasury-wine-estates.jpg"
-  },
-  {
-    "name": "NASA",
-    "logo": "logos/nasa.jpg"
-  },
-  {
-    "name": "Juniper Networks",
-    "logo": "logos/juniper-networks.jpg"
-  },
-  {
-    "name": "Diageo",
-    "logo": "logos/diageo.jpg"
-  },
-  {
-    "name": "Owens Corning",
-    "logo": "logos/owens-corning.jpg"
-  },
-  {
-    "name": "Foster's Group",
-    "logo": "logos/fosters.jpg"
-  },
-  {
-    "name": "Autodesk",
-    "logo": "logos/autodesk.jpg"
-  },
-  {
-    "name": "Reliant",
-    "logo": "logos/reliant.jpg"
-  },
-  {
-    "name": "US West",
-    "logo": "logos/uswest.jpg"
-  },
-  {
-    "name": "CASA",
-    "logo": "logos/casa.jpg"
-  },
-  {
-    "name": "ExxonMobil",
-    "logo": "logos/exxonmobil.jpg"
-  },
-  {
-    "name": "Lam Research",
-    "logo": "logos/lam-research.jpg"
-  },
-  {
-    "name": "The Leadership Alliance",
-    "logo": "logos/leadership-alliance.jpg"
-  },
-  {
-    "name": "NMSDC",
-    "logo": "logos/nmsdc.jpg"
-  },
-  {
-    "name": "WSET",
-    "logo": "logos/wset.jpg"
-  },
-  {
-    "name": "SGI",
-    "logo": "logos/sgi.jpg"
-  },
-  {
-    "name": "Mercury Interactive",
-    "logo": "logos/mercury-interactive.jpg"
-  },
-  {
-    "name": "Women for Winesense",
-    "logo": "logos/women-winesense.jpg"
-  },
-  {
-    "name": "AirTouch",
-    "logo": "logos/airtouch.jpg"
-  },
-  {
-    "name": "Blue Shield of California",
-    "logo": "logos/blue-shield.jpg"
-  },
-  {
-    "name": "PBWC",
-    "logo": "logos/pbwc.jpg"
-  },
-  {
-    "name": "Pacific Bell",
-    "logo": "logos/pacific-bell.jpg"
-  },
-  {
-    "name": "Beringer",
-    "logo": "logos/beringer.jpg"
-  },
-  {
-    "name": "Caltex",
-    "logo": "logos/caltex.jpg"
-  },
-  {
-    "name": "Stanford University",
-    "logo": "logos/stanford.jpg"
-  },
-  {
-    "name": "Hitachi",
-    "logo": "logos/hitachi.jpg"
-  },
-  {
-    "name": "Guide Dogs for the Blind",
-    "logo": "logos/guide-dogs.jpg"
-  },
-  {
-    "name": "Junior Achievement",
-    "logo": "logos/junior-achievement.jpg"
-  },
-  {
-    "name": "Special Olympics",
-    "logo": "logos/specialolympics.jpg"
-  },
-  {
-    "name": "BT",
-    "logo": "logos/bt.jpg"
-  },
-  {
-    "name": "West Sonoma Coast Vintners",
-    "logo": "logos/west-sonoma-coast.jpg"
-  },
-  {
-    "name": "Lynmar Estate",
-    "logo": "logos/lynmar-estate.jpg"
-  },
-  {
-    "name": "San Francisco Marathon",
-    "logo": "logos/sf-marathon.jpg"
-  },
-  {
-    "name": "McKesson",
-    "logo": "logos/mckesson.jpg"
-  }
-]
+{
+  "clients": [
+    {
+      "name": "Danaher",
+      "logo": "logos/danaher.jpg"
+    },
+    {
+      "name": "Digital Realty",
+      "logo": "logos/digitalrealty.jpg"
+    },
+    {
+      "name": "IDEO",
+      "logo": "logos/ideo.jpg"
+    },
+    {
+      "name": "Mozilla",
+      "logo": "logos/mozilla.jpg"
+    },
+    {
+      "name": "iRhythm",
+      "logo": "logos/irhythm.jpg"
+    },
+    {
+      "name": "Dolby",
+      "logo": "logos/dolby.jpg"
+    },
+    {
+      "name": "Genentech",
+      "logo": "logos/genentech.jpg"
+    },
+    {
+      "name": "Cyrq Energy",
+      "logo": "logos/cyrq.jpg"
+    },
+    {
+      "name": "Gap Inc.",
+      "logo": "logos/gap.jpg"
+    },
+    {
+      "name": "Chevron",
+      "logo": "logos/chevron.jpg"
+    },
+    {
+      "name": "Box",
+      "logo": "logos/box.jpg"
+    },
+    {
+      "name": "Napa Valley Vintners",
+      "logo": "logos/napa-valley-vintners.jpg"
+    },
+    {
+      "name": "Riot Games",
+      "logo": "logos/riotgames.jpg"
+    },
+    {
+      "name": "Visa",
+      "logo": "logos/visa.jpg"
+    },
+    {
+      "name": "Kaiser Permanente",
+      "logo": "logos/kaiser-permanente.jpg"
+    },
+    {
+      "name": "O'Reilly",
+      "logo": "logos/oreilly.jpg"
+    },
+    {
+      "name": "RocketFuel",
+      "logo": "logos/rocketfuel.jpg"
+    },
+    {
+      "name": "Motorola",
+      "logo": "logos/motorola.jpg"
+    },
+    {
+      "name": "HP",
+      "logo": "logos/hp.jpg"
+    },
+    {
+      "name": "Cisco",
+      "logo": "logos/cisco.jpg"
+    },
+    {
+      "name": "Informatica",
+      "logo": "logos/informatica.jpg"
+    },
+    {
+      "name": "Roche",
+      "logo": "logos/roche.jpg"
+    },
+    {
+      "name": "PG&E",
+      "logo": "logos/pge.jpg"
+    },
+    {
+      "name": "Accenture",
+      "logo": "logos/accenture.jpg"
+    },
+    {
+      "name": "Lockheed Martin",
+      "logo": "logos/lockheed-martin.jpg"
+    },
+    {
+      "name": "IRS",
+      "logo": "logos/irs.jpg"
+    },
+    {
+      "name": "Levi's",
+      "logo": "logos/levis.jpg"
+    },
+    {
+      "name": "Treasury Wine Estates",
+      "logo": "logos/treasury-wine-estates.jpg"
+    },
+    {
+      "name": "NASA",
+      "logo": "logos/nasa.jpg"
+    },
+    {
+      "name": "Juniper Networks",
+      "logo": "logos/juniper-networks.jpg"
+    },
+    {
+      "name": "Diageo",
+      "logo": "logos/diageo.jpg"
+    },
+    {
+      "name": "Owens Corning",
+      "logo": "logos/owens-corning.jpg"
+    },
+    {
+      "name": "Foster's Group",
+      "logo": "logos/fosters.jpg"
+    },
+    {
+      "name": "Autodesk",
+      "logo": "logos/autodesk.jpg"
+    },
+    {
+      "name": "Reliant",
+      "logo": "logos/reliant.jpg"
+    },
+    {
+      "name": "US West",
+      "logo": "logos/uswest.jpg"
+    },
+    {
+      "name": "CASA",
+      "logo": "logos/casa.jpg"
+    },
+    {
+      "name": "ExxonMobil",
+      "logo": "logos/exxonmobil.jpg"
+    },
+    {
+      "name": "Lam Research",
+      "logo": "logos/lam-research.jpg"
+    },
+    {
+      "name": "The Leadership Alliance",
+      "logo": "logos/leadership-alliance.jpg"
+    },
+    {
+      "name": "NMSDC",
+      "logo": "logos/nmsdc.jpg"
+    },
+    {
+      "name": "WSET",
+      "logo": "logos/wset.jpg"
+    },
+    {
+      "name": "SGI",
+      "logo": "logos/sgi.jpg"
+    },
+    {
+      "name": "Mercury Interactive",
+      "logo": "logos/mercury-interactive.jpg"
+    },
+    {
+      "name": "Women for Winesense",
+      "logo": "logos/women-winesense.jpg"
+    },
+    {
+      "name": "AirTouch",
+      "logo": "logos/airtouch.jpg"
+    },
+    {
+      "name": "Blue Shield of California",
+      "logo": "logos/blue-shield.jpg"
+    },
+    {
+      "name": "PBWC",
+      "logo": "logos/pbwc.jpg"
+    },
+    {
+      "name": "Pacific Bell",
+      "logo": "logos/pacific-bell.jpg"
+    },
+    {
+      "name": "Beringer",
+      "logo": "logos/beringer.jpg"
+    },
+    {
+      "name": "Caltex",
+      "logo": "logos/caltex.jpg"
+    },
+    {
+      "name": "Stanford University",
+      "logo": "logos/stanford.jpg"
+    },
+    {
+      "name": "Hitachi",
+      "logo": "logos/hitachi.jpg"
+    },
+    {
+      "name": "Guide Dogs for the Blind",
+      "logo": "logos/guide-dogs.jpg"
+    },
+    {
+      "name": "Junior Achievement",
+      "logo": "logos/junior-achievement.jpg"
+    },
+    {
+      "name": "Special Olympics",
+      "logo": "logos/specialolympics.jpg"
+    },
+    {
+      "name": "BT",
+      "logo": "logos/bt.jpg"
+    },
+    {
+      "name": "West Sonoma Coast Vintners",
+      "logo": "logos/west-sonoma-coast.jpg"
+    },
+    {
+      "name": "Lynmar Estate",
+      "logo": "logos/lynmar-estate.jpg"
+    },
+    {
+      "name": "San Francisco Marathon",
+      "logo": "logos/sf-marathon.jpg"
+    },
+    {
+      "name": "McKesson",
+      "logo": "logos/mckesson.jpg"
+    }
+  ]
+}

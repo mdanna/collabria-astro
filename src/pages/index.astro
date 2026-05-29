@@ -1,7 +1,8 @@
 ---
 import Base from '../layouts/Base.astro';
 import { services } from '../data/services.js';
-import { heroQuotes } from '../data/hero-quotes.js';
+import heroQuotesData from '../data/hero-quotes.json';
+const heroQuotes = heroQuotesData.quotes;
 import { featuredCase, casesPreview } from '../data/cases-preview.js';
 ---
 <Base title="collabria" activePage="overview">
