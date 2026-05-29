@@ -1,6 +1,7 @@
 export const prerender = false;
 
 import type { APIRoute } from 'astro';
+import { env } from 'node:process';
 
 export const GET: APIRoute = async ({ url }) => {
   const code = url.searchParams.get('code');
@@ -9,66 +10,62 @@ export const GET: APIRoute = async ({ url }) => {
     return new Response('Missing OAuth code', { status: 400 });
   }
 
-  const tokenRes = await fetch('https://github.com/login/oauth/access_token', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-    },
-    body: JSON.stringify({
-      client_id: process.env.GITHUB_CLIENT_ID,
-      client_secret: process.env.GITHUB_CLIENT_SECRET,
-      code,
-    }),
-  });
+  const clientId = env.GITHUB_CLIENT_ID ?? import.meta.env.GITHUB_CLIENT_ID;
+  const clientSecret = env.GITHUB_CLIENT_SECRET ?? import.meta.env.GITHUB_CLIENT_SECRET;
 
-  const data = await tokenRes.json() as { access_token?: string; error?: string };
-
-  if (data.error || !data.access_token) {
-    return new Response(`GitHub OAuth error: ${data.error ?? 'no token returned'}`, { status: 400 });
+  if (!clientId || !clientSecret) {
+    return new Response('OAuth credentials not configured', { status: 500 });
   }
 
-  const token = data.access_token;
+  let token: string;
 
-  // Decap CMS expects a two-step postMessage handshake:
+  try {
+    const tokenRes = await fetch('https://github.com/login/oauth/access_token', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({ client_id: clientId, client_secret: clientSecret, code }),
+    });
+
+    const data = await tokenRes.json() as { access_token?: string; error?: string; error_description?: string };
+
+    if (data.error || !data.access_token) {
+      return new Response(`GitHub OAuth error: ${data.error} — ${data.error_description ?? ''}`, { status: 400 });
+    }
+
+    token = data.access_token;
+  } catch (err) {
+    return new Response(`Token exchange failed: ${String(err)}`, { status: 500 });
+  }
+
+  // Decap CMS postMessage handshake:
   // 1. Popup sends "authorizing:github" to announce itself
   // 2. Opener replies with its origin
-  // 3. Popup sends the token to that exact origin
+  // 3. Popup sends token to that exact origin (fallback: '*' after 2s)
   const content = `<!DOCTYPE html>
 <html>
 <body>
 <script>
   (function () {
     var provider = 'github';
-    var data = ${JSON.stringify({ token, provider })};
-    var msg = 'authorization:' + provider + ':success:' + JSON.stringify(data);
+    var msg = 'authorization:' + provider + ':success:' + JSON.stringify(${JSON.stringify({ token, provider: 'github' })});
 
     function send(origin) {
-      window.opener.postMessage(msg, origin);
+      if (window.opener) window.opener.postMessage(msg, origin);
     }
 
     if (window.opener) {
-      // Step 1: announce
       window.opener.postMessage('authorizing:' + provider, '*');
 
-      // Step 2: wait for opener to reply with its origin, then send token
       window.addEventListener('message', function (e) {
-        if (e.data === 'authorizing:' + provider) {
-          send(e.origin);
-        } else {
-          // Some Decap versions just need the direct send
-          send('*');
-        }
-        setTimeout(function () { window.close(); }, 500);
+        if (e.data === 'authorizing:' + provider) send(e.origin);
+        else send('*');
+        setTimeout(function () { window.close(); }, 200);
       }, { once: true });
 
-      // Fallback: send directly after a short wait in case no reply comes
-      setTimeout(function () {
-        send('*');
-        setTimeout(function () { window.close(); }, 500);
-      }, 2000);
+      // Fallback if no reply arrives
+      setTimeout(function () { send('*'); setTimeout(function () { window.close(); }, 200); }, 2000);
     } else {
-      document.body.innerText = 'Authentication complete. You can close this window.';
+      document.body.innerText = 'Authentication complete — you may close this window.';
     }
   })();
 </script>
