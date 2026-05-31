@@ -16,14 +16,14 @@ const clients = clientsData.clients.map(c => ({
   .hex-grid-wrap { margin: 0 auto; width: fit-content; max-width: 100%; }
   /* hex-row styles are applied via JS to avoid Astro scoping stripping them from dynamic elements */
   /* Outer wrapper: sets hex size + border colour */
-  .hex-outer { width: 130px; height: 150px; clip-path: polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%); background: var(--taupe); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 0.2s; }
-  .hex-outer:hover { background: var(--brown-warm); }
-  /* Inner hex: white fill, slightly smaller to expose the border */
-  .hex { width: 122px; height: 141px; clip-path: polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%); background: var(--white); display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 18px; transition: background 0.2s; }
+  .hex-outer { width: 130px; height: 150px; clip-path: polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%); background: var(--beige-mid); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 0.2s; }
+  .hex-outer:hover { background: var(--taupe); }
+  /* Inner hex: white fill, 2px smaller each side to create thin border */
+  .hex { width: 126px; height: 145px; clip-path: polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%); background: var(--white); display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 18px; transition: background 0.2s; }
   .hex-outer:hover .hex { background: var(--cream); }
   .hex-logo { max-width: 100%; max-height: 100px; width: auto; height: auto; object-fit: contain; mix-blend-mode: multiply; }
   .hex-name { font-family: 'Josefin Sans', sans-serif; font-weight: 300; font-size: 0.72rem; color: var(--espresso); letter-spacing: 0.06em; line-height: 1.35; }
-  @media (max-width: 420px) { .hex-outer { width: 90px; height: 104px; } .hex { width: 84px; height: 97px; } .hex-logo { max-height: 64px; } }
+  @media (max-width: 420px) { .hex-outer { width: 90px; height: 104px; } .hex { width: 86px; height: 99px; } .hex-logo { max-height: 64px; } }
 </style>
 
 <section class="clients-section" style="padding-top:80px">
@@ -45,7 +45,7 @@ const clients = clientsData.clients.map(c => ({
 
 <script>
   (function () {
-    const W = 130, H = 150, GAP = 3;
+    const W = 130, H = 150, GAP = 4;
     const grid = document.getElementById('hexGrid')!;
     let resizeTimer: ReturnType<typeof setTimeout>;
     function hexWidth() { const s = grid.querySelector('.hex-outer') as HTMLElement; return (s ? s.offsetWidth : 0) || W; }
@@ -64,8 +64,8 @@ const clients = clientsData.clients.map(c => ({
         const row = document.createElement('div');
         row.className = 'hex-row' + (isOffset ? ' offset' : '');
         row.style.display = 'flex';
-        row.style.gap = '3px';
-        const overlap = Math.round(w * 1.1547 * 0.25);
+        row.style.gap = gap + 'px';
+        const overlap = Math.round(w * 1.1547 * 0.25) - gap;
         const halfStep = Math.round((w + gap) / 2);
         row.style.marginTop = rowIdx === 0 ? '0' : `-${overlap}px`;
         if (isOffset) row.style.paddingLeft = `${halfStep}px`;
