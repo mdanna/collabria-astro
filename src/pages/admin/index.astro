@@ -9,6 +9,28 @@ export const prerender = true;
   <title>Collabria CMS</title>
   <style>
     body { margin: 0; }
+    #cms-guide-link {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 9999;
+      background: #3b1a0c;
+      color: #fdf8f3;
+      text-decoration: none;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      padding: 0.6rem 1.1rem;
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+      transition: background 0.2s;
+    }
+    #cms-guide-link:hover { background: #5c2d12; }
+    #cms-guide-link svg { width: 14px; height: 14px; flex-shrink: 0; }
   </style>
 </head>
 <body>
@@ -172,4 +194,13 @@ var observer = new MutationObserver(patchPreviewButtons);
 observer.observe(document.body, { childList: true, subtree: true });
 window.addEventListener('hashchange', patchPreviewButtons);
 </script>
+
+<a id="cms-guide-link" href="/collabria-cms-guide.docx" download="Collabria CMS User Guide.docx">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+    <polyline points="7 10 12 15 17 10"/>
+    <line x1="12" y1="15" x2="12" y2="3"/>
+  </svg>
+  User Guide
+</a>
 </html>
