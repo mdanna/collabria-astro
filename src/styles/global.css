@@ -42,7 +42,7 @@ nav {
   padding: 2.5rem 2rem 2rem;
   display: flex;
   flex-direction: column;
-  background: var(--cream);
+  background: var(--white);
   border-right: 1px solid var(--beige-mid);
 }
 
@@ -262,7 +262,7 @@ footer {
   .nav-links {
     display: none; flex-direction: column; align-items: flex-start;
     position: fixed; top: var(--nav-top-h); left: 0; right: 0;
-    background: var(--cream); border-bottom: 1px solid var(--beige-mid);
+    background: var(--white); border-bottom: 1px solid var(--beige-mid);
     padding: 1.5rem 2rem 2rem; gap: 1.25rem; z-index: 99;
     box-shadow: 0 8px 24px rgba(59,26,12,0.08);
   }
