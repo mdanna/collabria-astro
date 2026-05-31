@@ -46,7 +46,7 @@ nav {
   border-right: 1px solid var(--beige-mid);
 }
 
-.nav-logo { display: flex; align-items: flex-start; margin-bottom: 5.25rem; }
+.nav-logo { display: flex; align-items: flex-start; margin-bottom: 5.25rem; margin-left: -21px; }
 .nav-logo img { height: 84px; width: auto; display: block; mix-blend-mode: multiply; }
 
 .nav-links { display: flex; flex-direction: column; gap: 1.6rem; list-style: none; }
