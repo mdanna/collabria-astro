@@ -1,12 +1,12 @@
 {
   "clients": [
     {
-      "name": "iRhythm",
-      "logo": "/logos/irhythm.jpg"
-    },
-    {
       "name": "Danaher",
       "logo": "/logos/danaher.png"
+    },
+    {
+      "name": "iRhythm",
+      "logo": "/logos/irhythm.jpg"
     },
     {
       "name": "Digital Realty",
