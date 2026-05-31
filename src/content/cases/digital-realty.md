@@ -1,6 +1,6 @@
 ---
 client: "Digital Realty"
-title: "Tackling the retention challenge during M&amp;A"
+title: "Tackling the retention challenge during M&A"
 logo: "/logos/digitalrealty.jpg"
 challenge: "We are in growth and acquisition mode. We're not sure how to put structure around 'change' and communication. Employees are leaving, saying they feel disconnected. And we're in the dark about how our newly acquired employees feel."
 tags:

@@ -86,6 +86,7 @@ CMS.init({
             label: 'Client List',
             name: 'clients',
             file: 'src/data/clients.json',
+            preview_path: 'clients',
             fields: [
               {
                 label: 'Clients',
@@ -93,7 +94,7 @@ CMS.init({
                 widget: 'list',
                 fields: [
                   { label: 'Company Name', name: 'name', widget: 'string' },
-                  { label: 'Logo', name: 'logo', widget: 'image', hint: 'Upload a new logo or keep the existing path' },
+                  { label: 'Logo Path', name: 'logo', widget: 'string', hint: 'Must start with /  e.g. /logos/cisco.jpg  — or use the Media tab to upload and copy the path' },
                 ],
               },
             ],
@@ -102,6 +103,7 @@ CMS.init({
             label: 'Homepage Quotes',
             name: 'hero_quotes',
             file: 'src/data/hero-quotes.json',
+            preview_path: '/',
             fields: [
               {
                 label: 'Quotes',
@@ -119,6 +121,7 @@ CMS.init({
             label: 'Services',
             name: 'services',
             file: 'src/data/services.json',
+            preview_path: '/',
             fields: [
               {
                 label: 'Services',
