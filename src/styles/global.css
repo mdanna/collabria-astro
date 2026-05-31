@@ -54,9 +54,9 @@ nav {
 .nav-links a {
   color: var(--brown-mid);
   text-decoration: none;
-  font-size: 0.74rem;
+  font-size: 0.88rem;
   font-weight: 300;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   transition: color 0.2s;
   display: flex;
@@ -89,10 +89,9 @@ nav {
 }
 
 .nav-bottom a {
-  font-size: 0.68rem;
+  font-size: 0.88rem;
   font-weight: 300;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  letter-spacing: 0.04em;
   color: var(--taupe);
   text-decoration: none;
   transition: color 0.2s;
