@@ -239,7 +239,7 @@ import { featuredCase, casesPreview } from '../data/cases-preview.js';
           {s.lead && <p class="service-lead">{s.lead}</p>}
           <p class="service-body">{s.body}</p>
           <ul class="service-list">
-            {s.items.map(item => <li>{item}</li>)}
+            {(typeof s.items === 'string' ? s.items.split('\n') : s.items).map((item: string) => <li>{item}</li>)}
           </ul>
         </div>
       ))}
