@@ -1,6 +1,6 @@
 ---
 client: Genentech
-title: Competing in the war for talent [TEST]
+title: Competing in the war for talent
 logo: /logos/genentech.jpg
 challenge: We must up our game in attracting sought-after and high potential
   talent. Our future depends on building tomorrow's leaders.
