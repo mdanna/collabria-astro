@@ -109,11 +109,11 @@ nav {
 }
 
 .page-hero-label {
-  font-size: 0.7rem;
+  font-size: 0.85rem;
   font-weight: 300;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--brown-warm);
+  color: var(--brown-mid);
   margin-bottom: 1rem;
   display: flex;
   align-items: center;
@@ -126,7 +126,7 @@ nav {
   content: '';
   display: block;
   width: 24px; height: 1px;
-  background: var(--brown-warm);
+  background: var(--brown-mid);
   flex-shrink: 0;
 }
 
@@ -151,11 +151,11 @@ nav {
 .section-inner { max-width: 1160px; margin: 0 auto; }
 
 .section-label {
-  font-size: 0.7rem;
+  font-size: 0.85rem;
   font-weight: 300;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--brown-warm);
+  color: var(--brown-mid);
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -164,7 +164,7 @@ nav {
 .section-label::before {
   content: '';
   width: 24px; height: 1px;
-  background: var(--brown-warm);
+  background: var(--brown-mid);
   display: block; flex-shrink: 0;
 }
 
