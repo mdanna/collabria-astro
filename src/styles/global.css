@@ -17,7 +17,7 @@
   --clients-bg:   #8a6040;
   --slate:        #6b7a7d;
   --nav-width:    220px;
-  --nav-top-h:    64px;
+  --nav-top-h:    108px;
 }
 
 html { scroll-behavior: smooth; }
@@ -257,7 +257,7 @@ footer {
     border-right: none; border-bottom: 1px solid var(--beige-mid);
   }
 
-  .nav-logo { margin-bottom: 0; }
+  .nav-logo { margin-bottom: 0; margin-left: 0; }
 
   .nav-links {
     display: none; flex-direction: column; align-items: flex-start;
