@@ -45,7 +45,7 @@ CMS.init({
       name: 'github',
       repo: 'mdanna/collabria-astro',
       branch: 'main',
-      base_url: 'https://collabria-astro.vercel.app',
+      base_url: 'https://www.collabriainc.com',
       auth_endpoint: 'api/auth',
     },
     media_folder: 'public/logos',
@@ -147,24 +147,24 @@ CMS.init({
 <script is:inline>
 // Map each CMS file/collection to its live URL
 var PREVIEW_URLS = {
-  clients:     'https://collabria-astro.vercel.app/clients',
-  hero_quotes: 'https://collabria-astro.vercel.app/',
-  services:    'https://collabria-astro.vercel.app/#services',
-  cases:       'https://collabria-astro.vercel.app/cases',
+  clients:     'https://www.collabriainc.com/clients',
+  hero_quotes: 'https://www.collabriainc.com/',
+  services:    'https://www.collabriainc.com/#services',
+  cases:       'https://www.collabriainc.com/cases',
 };
 
 function getLiveUrl() {
   var hash = window.location.hash || '';
   // Case study entry: #/collections/cases/entries/irhythm
   var entryMatch = hash.match(/\/collections\/cases\/entries\/([^/]+)/);
-  if (entryMatch) return 'https://collabria-astro.vercel.app/stories/' + entryMatch[1];
+  if (entryMatch) return 'https://www.collabriainc.com/stories/' + entryMatch[1];
   // Site data file: #/collections/site_data/entries/clients
   var fileMatch = hash.match(/\/entries\/([^/]+)$/);
   if (fileMatch && PREVIEW_URLS[fileMatch[1]]) return PREVIEW_URLS[fileMatch[1]];
   // Collection index
   var colMatch = hash.match(/\/collections\/([^/]+)$/);
   if (colMatch && PREVIEW_URLS[colMatch[1]]) return PREVIEW_URLS[colMatch[1]];
-  return 'https://collabria-astro.vercel.app/';
+  return 'https://www.collabriainc.com/';
 }
 
 function patchPreviewButtons() {
