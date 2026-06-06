@@ -1,0 +1,286 @@
+================================================================
+COLLABRIA WEBSITE — LISA'S SETUP GUIDE
+How to maintain and update the Collabria website from your Mac
+================================================================
+
+Hi Lisa,
+
+This guide walks you through setting up everything you need to
+maintain and update the Collabria website on your Mac. Once set up,
+you will be able to make changes to the site by simply describing
+what you want in plain English — no coding required.
+
+The whole process takes about 20–30 minutes the first time.
+
+
+================================================================
+SECTION 1 — UNDERSTANDING YOUR TOOLS
+================================================================
+
+Before starting, here is a quick summary of what you will be using
+and why:
+
+  THE CMS (collabriainc.com/admin)
+  For everyday content updates — adding case studies, editing
+  client quotes, updating services. No technical knowledge needed.
+  This is your primary tool for content.
+
+  CLAUDE DESKTOP APP (Code tab)
+  For design and layout changes — resizing fonts, changing colours,
+  restructuring pages. You describe what you want in plain English
+  and Claude makes the changes, then publishes them live.
+
+  SOURCETREE
+  A visual tool for keeping your local copy of the website in sync
+  with Mario's latest changes. Think of it as a "sync" button.
+
+  NOTE ON DEPLOYMENT
+  You do not need a Vercel account or any deployment tools.
+  When Claude pushes changes to GitHub, the live website updates
+  automatically within about 30 seconds. Everything is handled
+  for you behind the scenes.
+
+
+================================================================
+SECTION 2 — SOFTWARE TO INSTALL (in order)
+================================================================
+
+Follow these steps in sequence. Each one builds on the previous.
+
+----------------------------------------------------------------
+STEP 1 — Install Homebrew (Mac package manager)
+----------------------------------------------------------------
+
+Homebrew is a tool that makes it easy to install other software
+on a Mac. You only need to install it once.
+
+1. Open the Terminal app
+   (Go to Applications → Utilities → Terminal)
+
+2. Copy and paste the following command, then press Enter:
+
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+3. Follow any prompts on screen. It may ask for your Mac password.
+   This is normal — type it and press Enter.
+
+4. When it finishes, close and reopen Terminal.
+
+----------------------------------------------------------------
+STEP 2 — Install Git and Node.js
+----------------------------------------------------------------
+
+These are the technical foundations the project runs on.
+
+1. In Terminal, type the following and press Enter:
+
+   brew install git node@20
+
+2. When it finishes, verify it worked by typing:
+
+   git --version
+   node --version
+
+   Both should show version numbers. If they do, you are done.
+
+----------------------------------------------------------------
+STEP 3 — Install SourceTree (visual Git manager)
+----------------------------------------------------------------
+
+SourceTree lets you sync Mario's latest changes with one click,
+without using the Terminal.
+
+1. Go to: https://www.sourcetreeapp.com
+2. Click Download Free
+3. Open the downloaded file and drag SourceTree to Applications
+4. Open SourceTree and create a free Atlassian account when prompted
+
+----------------------------------------------------------------
+STEP 4 — Clone the project in SourceTree
+----------------------------------------------------------------
+
+This downloads the website files to your Mac.
+
+1. Open SourceTree
+2. Click the + button (top left) → New
+3. Click "Clone from URL"
+4. In the Source URL field, paste:
+   https://github.com/mdanna/collabria-astro.git
+5. In Destination Path, choose a folder (e.g. your Desktop)
+6. Click Clone
+
+SourceTree will download all the project files. This may take
+a minute or two.
+
+Once done, you will see the project listed in SourceTree.
+Every time Mario makes changes, click the PULL button (↓ arrow
+at the top) to sync his latest updates to your machine before
+you start working.
+
+----------------------------------------------------------------
+STEP 5 — Install project dependencies
+----------------------------------------------------------------
+
+1. Open Terminal
+2. Navigate to the project folder (replace "Desktop" if you
+   chose a different location in Step 4):
+
+   cd ~/Desktop/collabria-astro
+
+3. Run:
+
+   npm install
+
+This downloads all the packages the project needs.
+It takes about 1 minute and you only need to do it once.
+
+----------------------------------------------------------------
+STEP 6 — Set up your environment file
+----------------------------------------------------------------
+
+The project needs three configuration values to run correctly
+on your machine. These have been provided for you below.
+
+1. In Terminal (inside the project folder), type:
+
+   touch .env
+   open -e .env
+
+2. A TextEdit window opens. Copy and paste these three lines
+   exactly as they appear:
+
+   GITHUB_CLIENT_ID=Ov23liRj4zCAn6OtBQSH
+   GITHUB_CLIENT_SECRET=015dc312bb995f0d2827b8def953858a7ae98427
+   SITE_URL=https://www.collabriainc.com
+
+3. Save the file (Cmd+S) and close TextEdit.
+
+IMPORTANT: Never share this file or these values with anyone.
+They are private security keys for the website.
+
+----------------------------------------------------------------
+STEP 7 — Install the Claude Desktop App
+----------------------------------------------------------------
+
+This is the main tool you will use to make design and layout
+changes to the site.
+
+1. Go to: https://claude.ai/download
+2. Download and install the Mac app
+3. Open it and sign in with your Anthropic account
+   (create one free at https://anthropic.com if you don't have one)
+
+4. At the top of the Claude window, you will see three tabs:
+      Chat  |  Cowork  |  Code
+
+   Click the CODE tab. This is where you will work on the website.
+
+5. Install the Vercel plugin inside Claude Code.
+   In the Code tab, type:
+
+   /marketplace install vercel
+
+   This adds helpful deployment commands to your workflow.
+
+
+================================================================
+SECTION 3 — HOW TO WORK ON THE WEBSITE
+================================================================
+
+----------------------------------------------------------------
+FOR CONTENT UPDATES (case studies, clients, quotes, services)
+----------------------------------------------------------------
+
+Simply go to: https://www.collabriainc.com/admin
+
+Log in with your GitHub account. This is the CMS — no technical
+knowledge needed. Make your changes and click Publish.
+
+The live site updates automatically within about 30 seconds.
+
+----------------------------------------------------------------
+FOR DESIGN AND LAYOUT CHANGES
+----------------------------------------------------------------
+
+Use the Claude desktop app (Code tab). Here is your routine:
+
+BEFORE YOU START — always sync Mario's latest changes first:
+  1. Open SourceTree
+  2. Click PULL (↓ arrow at the top of the toolbar)
+  This ensures you have the latest version before making changes.
+
+TO MAKE CHANGES:
+  1. Open the Claude desktop app
+  2. Click the CODE tab
+  3. Open the project folder (collabria-astro on your Desktop)
+  4. Describe what you want in plain English, for example:
+       "Make the font in the hero section bigger"
+       "Change the background colour of the clients page to white"
+       "Update the CTA button text to Work With Us"
+
+  Claude will make the changes and show you what it did.
+
+TO PUBLISH YOUR CHANGES:
+  Simply tell Claude:
+       "Commit and push to GitHub"
+
+  Claude saves your changes to GitHub, and Vercel automatically
+  publishes them to the live website within about 30 seconds.
+  No further action is needed on your part.
+
+TO PREVIEW LOCALLY BEFORE PUBLISHING:
+  If you want to see changes on your own machine before they go
+  live, type in Terminal:
+
+     cd ~/Desktop/collabria-astro
+     npm run dev
+
+  Then open your browser and go to: http://localhost:4321
+  Press Ctrl+C in Terminal when you want to stop the preview.
+
+
+================================================================
+SECTION 4 — DAILY WORKFLOW SUMMARY
+================================================================
+
+  CONTENT ONLY (clients, cases, quotes, services):
+  → Go to collabriainc.com/admin → make changes → click Publish
+
+  DESIGN OR LAYOUT CHANGES:
+  1. Open SourceTree → click Pull (sync Mario's latest changes)
+  2. Open Claude desktop app → Code tab
+  3. Open the collabria-astro project folder
+  4. Describe what you want in plain English
+  5. Tell Claude to "commit and push to GitHub"
+  6. Wait ~30 seconds → the live site is updated
+
+  IF YOU WANT TO PREVIEW BEFORE PUBLISHING:
+  → In Terminal: cd ~/Desktop/collabria-astro → npm run dev
+  → Open http://localhost:4321 in your browser
+
+
+================================================================
+SECTION 5 — QUICK REFERENCE
+================================================================
+
+  Live site:       https://www.collabriainc.com
+  CMS admin:       https://www.collabriainc.com/admin
+  GitHub repo:     https://github.com/mdanna/collabria-astro
+  Local preview:   http://localhost:4321
+                   (only available when npm run dev is running)
+
+  Something went wrong after a change?
+  → Tell Claude: "Revert the last change and push to GitHub"
+
+
+================================================================
+SECTION 6 — CONTACT FOR TECHNICAL SUPPORT
+================================================================
+
+For any technical issues with the setup or the website,
+contact Mario at: annadoiram@yahoo.it
+
+
+================================================================
+END OF GUIDE — Version 2.0 — June 2026
+================================================================
