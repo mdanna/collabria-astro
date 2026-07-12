@@ -74,14 +74,34 @@ These are the technical foundations the project runs on.
 
 1. In Terminal, type the following and press Enter:
 
-   brew install git node@20
+   brew install git node@20 gh
 
 2. When it finishes, verify it worked by typing:
 
    git --version
    node --version
 
-   Both should show version numbers. If they do, you are done.
+   Both should show version numbers.
+
+3. Tell Git who you are (this labels your saved changes).
+   Type these two lines, replacing the name and email with
+   your own, and press Enter after each:
+
+   git config --global user.name "Lisa Mroz"
+   git config --global user.email "your-email@example.com"
+
+4. Connect to GitHub so you can publish changes. Type:
+
+   gh auth login
+
+   Answer the prompts: choose GitHub.com, then HTTPS, then
+   "Login with a web browser". A code appears — copy it, press
+   Enter, and your browser opens. Paste the code and approve.
+
+   This is a one-time step. It lets Claude publish your changes
+   to the live site. (Mario must have added you as a collaborator
+   on the GitHub project first — check with him if the browser
+   step says you don't have access.)
 
 ----------------------------------------------------------------
 STEP 3 — Install SourceTree (visual Git manager)
@@ -282,5 +302,5 @@ contact Mario at: annadoiram@yahoo.it
 
 
 ================================================================
-END OF GUIDE — Version 2.0 — June 2026
+END OF GUIDE — Version 2.1 — July 2026
 ================================================================
