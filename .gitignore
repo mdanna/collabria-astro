@@ -1,6 +1,14 @@
 node_modules/
 dist/
 .vercel/output/
+
+# Astro generated caches (type declarations below are tracked)
+.astro/collections/
+.astro/data-store.json
+.astro/settings.json
+.astro/content-assets.mjs
+.astro/content-modules.mjs
+
 .env
 .env.*
 !.env.example
