@@ -1,6 +1,6 @@
 # Collabria CMS — Admin Test Cases
 
-**Application URL:** https://collabria-astro.vercel.app/admin  
+**Application URL:** https://www.collabriainc.com/admin  
 **Version:** 1.0 — May 2026
 
 ---

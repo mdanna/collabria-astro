@@ -35,9 +35,9 @@ and why:
   with Mario's latest changes. Think of it as a "sync" button.
 
   NOTE ON DEPLOYMENT
-  You do not need a Vercel account or any deployment tools.
+  You do not need any hosting account or deployment tools.
   When Claude pushes changes to GitHub, the live website updates
-  automatically within about 30 seconds. Everything is handled
+  automatically within about a minute. Everything is handled
   for you behind the scenes.
 
 
@@ -155,31 +155,7 @@ This downloads all the packages the project needs.
 It takes about 1 minute and you only need to do it once.
 
 ----------------------------------------------------------------
-STEP 6 — Set up your environment file
-----------------------------------------------------------------
-
-The project needs three configuration values to run correctly
-on your machine. These have been provided for you below.
-
-1. In Terminal (inside the project folder), type:
-
-   touch .env
-   open -e .env
-
-2. A TextEdit window opens. Copy and paste these three lines
-   exactly as they appear:
-
-   GITHUB_CLIENT_ID=Ov23liRj4zCAn6OtBQSH
-   GITHUB_CLIENT_SECRET=015dc312bb995f0d2827b8def953858a7ae98427
-   SITE_URL=https://www.collabriainc.com
-
-3. Save the file (Cmd+S) and close TextEdit.
-
-IMPORTANT: Never share this file or these values with anyone.
-They are private security keys for the website.
-
-----------------------------------------------------------------
-STEP 7 — Install the Claude Desktop App
+STEP 6 — Install the Claude Desktop App
 ----------------------------------------------------------------
 
 This is the main tool you will use to make design and layout
@@ -195,13 +171,6 @@ changes to the site.
 
    Click the CODE tab. This is where you will work on the website.
 
-5. Install the Vercel plugin inside Claude Code.
-   In the Code tab, type:
-
-   /marketplace install vercel
-
-   This adds helpful deployment commands to your workflow.
-
 
 ================================================================
 SECTION 3 — HOW TO WORK ON THE WEBSITE
@@ -216,7 +185,7 @@ Simply go to: https://www.collabriainc.com/admin
 Log in with your GitHub account. This is the CMS — no technical
 knowledge needed. Make your changes and click Publish.
 
-The live site updates automatically within about 30 seconds.
+The live site updates automatically within about a minute.
 
 ----------------------------------------------------------------
 FOR DESIGN AND LAYOUT CHANGES
@@ -244,8 +213,8 @@ TO PUBLISH YOUR CHANGES:
   Simply tell Claude:
        "Commit and push to GitHub"
 
-  Claude saves your changes to GitHub, and Vercel automatically
-  publishes them to the live website within about 30 seconds.
+  Claude saves your changes to GitHub, and the website is rebuilt
+  and published automatically within about a minute.
   No further action is needed on your part.
 
 TO PREVIEW LOCALLY BEFORE PUBLISHING:
@@ -272,7 +241,7 @@ SECTION 4 — DAILY WORKFLOW SUMMARY
   3. Open the collabria-astro project folder
   4. Describe what you want in plain English
   5. Tell Claude to "commit and push to GitHub"
-  6. Wait ~30 seconds → the live site is updated
+  6. Wait about a minute → the live site is updated
 
   IF YOU WANT TO PREVIEW BEFORE PUBLISHING:
   → In Terminal: cd ~/Desktop/collabria-astro → npm run dev

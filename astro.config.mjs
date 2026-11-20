@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
-import vercel from '@astrojs/vercel';
 
+// Pure static site, served by Caddy on the OVH web VPS (deploy/). The CMS login
+// (/api/auth*) is not part of this build: Caddy sends it to the shared decap-oauth service.
 export default defineConfig({
   output: 'static',
-  adapter: vercel(),
 });

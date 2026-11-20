@@ -1,0 +1,46 @@
+# On every push to main (including the commits Decap CMS makes when the client edits), builds
+# the site and publishes dist/ to the OVH web VPS (Strasbourg). The WEB_VPS_SSH_KEY secret
+# logs in as user deploy, which can only run /usr/local/bin/deploy-static on the server: no
+# sudo, no shell. Changes to deploy/caddy.conf are not installed: the run warns, and
+# ./deploy/vps.sh installs them from a Mac.
+name: Deploy to the web VPS
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - run: npm run build
+      - name: Publish dist/
+        env:
+          SSH_KEY: ${{ secrets.WEB_VPS_SSH_KEY }}
+          KNOWN_HOSTS: ${{ vars.WEB_VPS_KNOWN_HOSTS }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          printf '%s\n' "$KNOWN_HOSTS" > ~/.ssh/known_hosts
+          tar --transform 's,^dist,public,' -cf - dist | ssh -o BatchMode=yes deploy@51.91.127.232 \
+            "static collabria $(git rev-parse --short HEAD) $(sha256sum deploy/caddy.conf | cut -c1-64)"
+      - name: Check the site
+        run: |
+          sleep 2
+          curl -fsS -o /dev/null -w '%{http_code} https://www.collabriainc.com/\n' https://www.collabriainc.com/
